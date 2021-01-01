@@ -15,6 +15,7 @@ vagrant up
 ในการสร้าง VMs จะมีการ deploy ansible ในแต่ละ VMs เรียบร้อยเลย ด้วยไฟล์​ [playbook.yml](vagrant-webapp-ansible/playbook.yml)
 
 เมื่อเสร็จแล้วก็สามารถทดสอบ โดยเรียกไปที่ 
+```
 http://192.168.55.26:5000    <---------------- Welcome!
 http://192.168.55.27:5000   <---------------- Welcome!
 
@@ -23,7 +24,7 @@ http://192.168.55.27:5000/how%20are%20you    <---------------- I am good, how ab
 
 http://192.168.55.26:5000/read%20from%20database    <----------------JOHN
 http://192.168.55.27:5000/read%20from%20database    <----------------JOHN
-
+```
 ### Coding Exercise
 ```
 -
