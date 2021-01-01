@@ -1,0 +1,11 @@
+Vagrant.configure("2") do |config|
+    config.vm.provision "shell",
+      inline: "sudo sed -i 's/^#PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config && sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config && systemctl restart sshd"
+  
+    config.vm.define "webapp" do |webapp|
+      webapp.vm.hostname = "webapp"
+      webapp.vm.box = "centos/7"
+      webapp.vm.network "private_network", ip: "192.168.55.25"
+    end
+
+  end

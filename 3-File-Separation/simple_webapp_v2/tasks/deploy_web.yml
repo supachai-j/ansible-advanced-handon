@@ -1,0 +1,17 @@
+    -
+      name: Install all required dependencies
+      yum:
+        name:
+          - python
+          - python-pip
+          - wget
+        state: present
+    - 
+      name: Install python dependencies
+      pip:
+        name: "{{ package }}"
+        state: present
+      vars:
+        package:
+          - flask
+          - flask-mysql

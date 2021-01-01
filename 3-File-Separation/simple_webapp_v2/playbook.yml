@@ -1,0 +1,16 @@
+---
+-
+  name: Deploy a web application
+  hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+    - 
+      name: Enable EPEL Repositoy on CentOS 7
+      yum:
+        name: epel-release
+        state: latest
+
+    - include: tasks/deploy_web.yml
+    - include: tasks/deploy_db.yml
+    - include: tasks/deploy_app.yml

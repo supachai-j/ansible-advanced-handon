@@ -1,0 +1,2 @@
+db_and_web_server1 ansible_host=192.168.55.26 ansible_user=root ansible_ssh_pass=vagrant
+db_and_web_server2 ansible_host=192.168.55.27 ansible_user=root ansible_ssh_pass=vagrant

@@ -1,0 +1,92 @@
+---
+-
+  name: Deploy a web application
+  hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+    - 
+      name: Enable EPEL Repositoy on CentOS 7
+      yum:
+        name: epel-release
+        state: latest
+    -
+      name: Upgrade all package
+      yum:
+        name: '*'
+        state: latest 
+    -
+      name: Install all required dependencies
+      yum:
+        name:
+          - python
+          - python-pip
+          - wget
+        state: present
+
+ #   -
+ #     name: Install Python Pip  
+ #     yum: pkg=python-pip state=installed
+
+  # Replace using Pip module, bacuase it's not working
+  # https://github.com/ansible/ansible/issues/47361
+    - 
+      name: Install python dependencies
+#      command: pip install flask flask-mysql
+      pip:
+        name: "{{ package }}"
+      vars:
+        package:
+          - flask
+          - flask-mysql
+    -
+      name: Install the mysql rpm from remote repo 
+      yum:
+        name: http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+        state: present
+    -
+      name: Upgrade all package
+      yum:
+        name: '*'
+        state: latest 
+    -
+      name: Install mysql 
+      yum: 
+        name: mysql-server
+        state: latest
+    - 
+      name: Start mysql and enable
+      service:  
+        name: mysql
+        state: started
+        enabled: yes
+    -
+      name: Create new database with name 'employee_db'
+      mysql_db:
+        name: employee_db
+        state: present
+    -
+      name: Create database user with name 'db_user' and all database privilege
+      mysql_user:
+        name: db_user
+        password: Passw0rd
+        priv: '*.*:ALL'
+        state: present
+
+    - 
+      name:  Insert data to database
+      command: mysql -e "USE employee_db;CREATE TABLE employees (name VARCHAR(20));INSERT INTO employees VALUES ('JOHN');"
+      ignore_errors: True
+    -
+      name: Copy app.py to /opt
+      copy:
+        src: app.py
+        dest: /opt
+    -
+      name: Run App Server with Flask
+      shell: 'export FLASK_ENV=development; export FLASK_APP=/opt/app.py; nohup flask run --host=0.0.0.0 </dev/null >/dev/null 2>&1 &'
+#      shell: 'export FLASK_ENV=development; FLASK_APP=/opt/app.py flask run --host=0.0.0.0'
+    - 
+      name: Testing Get App Server is work ?
+      uri: 
+        url: 'http://localhost:5000'
