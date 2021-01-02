@@ -1,7 +1,7 @@
-# File Separation
+# เรื่อง File Separation
 
 ## Variable of Inventory
-Inventory File Inventory
+ตัวอย่าง Inventory File Inventory
 ```
 db_and_web_server ansible_ssh_pass=Passw0rd ansible_host=192.168.1.14
 ```

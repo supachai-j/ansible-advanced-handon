@@ -1,6 +1,6 @@
-# section 1 Introduction
+# เริ่มต้น Introduction 
 
-## Recap 
+## ทบทวนเรื่องของ Ansible (Recap)
 ### Ansible Control Machine
 Ansible ในส่วนของ Control Machine รองรับเฉพาะ Linux เท่านั้น Playbook, Inventory, Modules ตัวอย่างการติดตั้ง
 
@@ -40,9 +40,9 @@ Inventory Parameters:
 - ansible_user - root/administrator
 - ansible_ssh_pass - Password
 
-Security: Ansible Vault
+ถ้าเก็บข้อมูลแบบต้องการ Security ก็ใช้ Ansible Vault โลด
 
-### Modules
+### เรื่องของ Modules
 - System
 - Commands
 - Files
@@ -51,7 +51,7 @@ Security: Ansible Vault
 - WIndows
 - Another...
 
-### Variable
+### เรื่องของ Variable
 ```
 #sample Ansible Playbook.yml
 
@@ -96,7 +96,7 @@ Jinja2 Templating
 source: '{{ inter_ip_range }}'
 ```
 
-### Conditional
+### เรื่องของเงื่อนไข (Conditional)
 
 Sample Inventory File
 ```
@@ -134,7 +134,7 @@ Sample Ansible Playbook1.yml
 
 ```
 
-### Loops
+### เรื่องของ Loops
 
 Sample Ansible Playbook1.yml
 ```
@@ -160,7 +160,7 @@ Sample Ansible Playbook1.yml
                 - grunt
 ```
 
-## Setup Environement
+## ในการ Setup Environement
 - VMs โดยใช้ Virtual Box หรือ VMware Workstation
 - Docker
 - Vagrant
@@ -209,22 +209,22 @@ target1 | SUCCESS => {
 [vagrant@master ping-test]$
 ```
 
-### Docker Image ubuntu ssh enabled
+### ตัวอย่าง Docker Image ubuntu ssh enabled
 The Docker file used to create the ubuntu-ssh-enabled Docker image is located here.
 https://github.com/mmumshad/ubuntu-ssh-enabled 
 
 Run the container:
-``
+```
 docker run -d mmumshad/ubuntu-ssh-enabled
-``
+```
 Identify the Internal IP
-``
+```
 docker inspect <container-id-name>
-``
+```
 SSH
-``
+```
 ssh <container-ip>
-``
+```
 Username: root
 
 Password: Passw0rd
@@ -244,4 +244,6 @@ su - vagrant
 docker run -it -d mmumshad/ubuntu-ssh-enabled
 docker run -it -d mmumshad/ubuntu-ssh-enabled
 docker run -it -d mmumshad/ubuntu-ssh-enabled
+
+docker inspect <docker-id>   -------เพื่อหา ip address ในการกำหนด inventory 
 ```
