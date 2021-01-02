@@ -1,8 +1,8 @@
 # Deploy Web App with Ansible
 
 ให้เข้าไปดูที่โฟเดอร์​ simple_web_app_ansible
-จะมีไฟล์​ [inventory.txt](2-Web-Application/simple_web_app_ansible/inventory.txt) ที่เก็บ target hosts อยู่
-มีไฟล์​ [app.py](2-Web-Application/simple_web_app_ansible/app.py) เป็น python wep app ที่สามารถ run บน Flask Web Application ได้
+จะมีไฟล์​ [inventory.txt](/simple_web_app_ansible/inventory.txt) ที่เก็บ target hosts อยู่
+มีไฟล์​ [app.py](/simple_web_app_ansible/app.py) เป็น python wep app ที่สามารถ run บน Flask Web Application ได้
 
 จากนั้นให้ทำการสร้าง VMs โดยใช้คำสั่ง 
 โดยเข้าไปที่โฟเดอร์ vagrant-webapp-ansible
@@ -12,7 +12,7 @@ vagrant status
 vagrant up
 ```
 
-ในการสร้าง VMs จะมีการ deploy ansible ในแต่ละ VMs เรียบร้อยเลย ด้วยไฟล์​ [playbook.yml](2-Web-Application/simple_web_app_ansible/playbook.yml)
+ในการสร้าง VMs จะมีการ deploy ansible ในแต่ละ VMs เรียบร้อยเลย ด้วยไฟล์​ [playbook.yml](/simple_web_app_ansible/playbook.yml)
 
 เมื่อเสร็จแล้วก็สามารถทดสอบ โดยเรียกไปที่ 
 ```
