@@ -1,0 +1,22 @@
+    - 
+      name: Enable EPEL Repositoy on CentOS 7
+      yum:
+        name: epel-release
+        state: latest
+    -
+      name: Install all required dependencies
+      yum:
+        name:
+          - python
+          - python-pip
+          - wget
+        state: present
+    - 
+      name: Install python dependencies
+      pip:
+        name: "{{ package }}"
+        state: present
+      vars:
+        package:
+          - flask
+          - flask-mysql

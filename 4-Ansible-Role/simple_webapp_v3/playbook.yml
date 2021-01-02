@@ -1,0 +1,10 @@
+---
+-
+  name: Deploy a web application
+  hosts: all
+  become: yes
+  become_method: sudo
+  roles:
+    - python
+    - mysql_db
+    - flask_web

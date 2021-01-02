@@ -1,8 +1,7 @@
 # Project General
-2-Web-Application/simple_web_app_ansible/vagrant-webapp-ansible/.vagrant/*
-2-Web-Application/vagrant-web-app/.vagrant/*
-1-Introduction/vagrant-labs/.vagrant/*
-3-File-Separation/simple_webapp_v2/vagrant-webapp-ansible/.vagrant/*
+
+# vagrant created by local
+*.vagrant
 
 # Log files (if you are creating logs in debug mode, uncomment this)
 *.log

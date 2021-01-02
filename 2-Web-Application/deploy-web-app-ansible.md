@@ -26,6 +26,8 @@ http://192.168.55.26:5000/read%20from%20database    <----------------JOHN
 http://192.168.55.27:5000/read%20from%20database    <----------------JOHN
 ```
 ### Coding Exercise
+
+ตัวอย่าง การเขียนการ deploy ด้วย ansible
 ```
 -
   name: Deploy a web application

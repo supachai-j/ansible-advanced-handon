@@ -1,0 +1,25 @@
+Vagrant.configure("2") do |config|
+    # edit ssh can root remote access with password 
+    config.vm.provision "shell",
+      inline: "sudo sed -i 's/^#PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config && sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config && systemctl restart sshd"
+
+    config.vm.define "appsrv01" do |appsrv01|
+        appsrv01.vm.hostname = "appsrv01"
+        appsrv01.vm.box = "centos/7"
+        appsrv01.vm.network "private_network", ip: "192.168.55.28"
+    end
+
+    config.vm.define "appsrv02" do |appsrv02|
+        appsrv02.vm.hostname = "appsrv02"
+        appsrv02.vm.box = "centos/7"
+        appsrv02.vm.network "private_network", ip: "192.168.55.29"
+    end
+  
+    # Deploy App with Ansible 
+    config.vm.provision :ansible do |ansible|
+      ansible.compatibility_mode = "2.0"
+      ansible.playbook = '../playbook.yml'
+      ansible.become = true
+    end
+
+  end

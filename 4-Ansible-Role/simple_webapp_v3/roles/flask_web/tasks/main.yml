@@ -1,0 +1,12 @@
+    -
+      name: Copy app.py to /opt
+      copy:
+        src: app.py
+        dest: /opt/app.py
+    -
+      name: Run App Server with Flask
+      shell: 'export FLASK_ENV=development; export FLASK_APP=/opt/app.py; nohup flask run --host=0.0.0.0 </dev/null >/dev/null 2>&1 &'
+    - 
+      name: Testing Get App Server is work ?
+      uri: 
+        url: 'http://localhost:5000'
