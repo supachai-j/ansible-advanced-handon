@@ -1,7 +1,9 @@
 #! /usr/bin/env python
 
 import json
-
+# from argparse import ArgumentParser
+import argparse
+# global args
 # Get inventory data from source - CMDB or any other API
 def get_inventory_data():
     return {
